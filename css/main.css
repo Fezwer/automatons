@@ -1,0 +1,95 @@
+@font-face {
+    font-family: 'SAIBA-45';
+    src: url('../fonts/SAIBA-45-Regular-(v1.1).otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'SAIBA-45 Outline';
+    src: url('../fonts/SAIBA-45-Outline-(v1.1).otf') format('opentype');
+}
+
+body{
+    min-height: 100vh;
+    min-width: 100vw;
+    margin: 0;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    user-select: none;
+    overflow-x: hidden;
+}
+
+main{
+    display: block;
+}
+
+main h1{
+    font-family: 'SAIBA-45', sans-serif;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 100px;    
+}
+
+main div:first-child{
+    width: 98%;
+    margin: 0;
+}
+
+header{
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    background-color:rgb(255, 50, 23);
+    min-width: 100vw;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1em;
+}
+
+header h1{
+    font-family: 'SAIBA-45 Outline', sans-serif;
+    display: flex;
+    text-align: center;
+    color: white;
+    font-size: 40px;    
+    font-weight: 500;
+    margin: 0.2em 0 0.2em 0;
+}
+
+.automaton{
+    position: fixed;
+    bottom: 0;
+    right: -10%;
+    height: 65%;
+    width: auto;
+    z-index: 2;
+}
+
+.description{
+    font-family: 'SAIBA-45', sans-serif;
+    font-size: 24px;
+    margin-bottom: 50px;
+    margin: 0 5%;
+    max-width: 60%;
+    font-weight: 100;
+    opacity: 0;
+    transition: all 1s;
+    filter: blur(5px);
+    transform: translateX(-100%);
+    margin-bottom: 100vh;
+}
+
+.show{
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+}
+
+@media only screen and (max-width: 768px) {
+    header h1 {
+        font-size: 30px;
+    }
+    .automaton{
+        right: -100%;
+    }
+}
