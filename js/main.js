@@ -15,20 +15,20 @@ function automatonSound(event) {
     const pixelData = ctx.getImageData(x, y, 1, 1).data;
 
     if (pixelData[3] !== 0) { // Проверяем непрозрачность пикселя
-        alert('Цветная область!');
-        // Воспроизвести звук или выполнить другие действия
-    } else {
-        alert('Прозрачная область.');
+        img.classList.add('automatonLight');
+        setTimeout(function () {
+            img.classList.remove('automatonLight');
+        }, 5 * 1000
+        );
     }
 }
 
-const observer = new IntersectionObserver((entries)=> {
+const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-        console.log(entry)
-        if (entry.isIntersecting){
+        if (entry.isIntersecting) {
             entry.target.classList.add('show');
-        }else{
-            entry.target.classList.remove('show')
+        } else {
+            entry.target.classList.remove('show');
         }
     });
 });

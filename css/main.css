@@ -8,6 +8,15 @@
     src: url('../fonts/SAIBA-45-Outline-(v1.1).otf') format('opentype');
 }
 
+@font-face {
+    font-family: 'Robo';
+    src: url('../fonts/robo.ttf') format('opentype');
+}
+
+:root{
+    --otstyp-top: 30vh;
+}
+
 body{
     min-height: 100vh;
     min-width: 100vw;
@@ -19,7 +28,9 @@ body{
 }
 
 main{
-    display: block;
+    display: flex;
+    flex-direction: column;
+    margin-top: var(--otstyp-top);
 }
 
 main h1{
@@ -27,12 +38,10 @@ main h1{
     display: flex;
     justify-content: center;
     text-align: center;
-    margin-bottom: 100px;    
-}
-
-main div:first-child{
-    width: 98%;
-    margin: 0;
+    position: fixed;
+    top: 2em;
+    width: 100vw;
+    z-index: 3;   
 }
 
 header{
@@ -54,6 +63,7 @@ header h1{
     font-size: 40px;    
     font-weight: 500;
     margin: 0.2em 0 0.2em 0;
+    z-index: 3;
 }
 
 .automaton{
@@ -66,17 +76,67 @@ header h1{
 }
 
 .description{
-    font-family: 'SAIBA-45', sans-serif;
+    font-family: 'Robo', sans-serif;
+    line-height: 26px;
     font-size: 24px;
-    margin-bottom: 50px;
     margin: 0 5%;
-    max-width: 60%;
+    margin-bottom: 30vh;
+    max-width: 50%;
+    display: flex;
+    align-items: center;
+    min-height: 70vh;
     font-weight: 100;
     opacity: 0;
-    transition: all 1s;
+    transition: all 1.5s ease-in-out;
     filter: blur(5px);
     transform: translateX(-100%);
-    margin-bottom: 100vh;
+    z-index: 0;
+}
+
+.description .center{
+    display: flex;
+    justify-content: center;
+}
+
+.description:last-of-type{
+    margin-bottom: 10vh;
+}
+
+.description img{
+    margin-top: 10px;
+    width: 100%;
+}
+
+.description button{
+    margin-top: 10px;
+    height: 40px;
+    width: 50%;
+    background-color: rgb(165, 42, 42);
+    border: 0;
+    border-radius: 17px;
+    color: white;
+    font-family: 'Robo', sans-serif;
+    animation-play-state: paused;
+}
+
+.gradient{
+    position: fixed;
+    top: 0;
+    background: linear-gradient(black,black, rgba(0, 0, 0, 0));
+    min-width: 100vw;
+    height: var(--otstyp-top);
+    z-index: 1;
+}
+
+/* Покадровая анимация для кнопки */
+@keyframes buttonBlink {
+    0% {background-color: rgb(255, 0, 0);}
+    50% {background-color: rgb(165, 42, 42);}
+    100% {background-color: rgb(255, 0, 0);}
+}
+
+.description button:hover{
+    animation: buttonBlink 1.2s infinite;
 }
 
 .show{
@@ -85,11 +145,21 @@ header h1{
     transform: translateX(0);
 }
 
+@keyframes automatonBlink {
+    0% {filter: brightness(100%); filter: contrast(100%);}
+    50% {filter: brightness(150%); filter: contrast(200%);}
+    100% {filter: brightness(100%); filter: contrast(100%);}
+}
+
+.automatonLight{
+    animation: automatonBlink 1s infinite;
+}   
+
 @media only screen and (max-width: 768px) {
     header h1 {
         font-size: 30px;
     }
     .automaton{
-        right: -100%;
+        transform: translate(46%, 20%);
     }
 }
