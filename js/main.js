@@ -13,13 +13,16 @@ function automatonSound(event) {
     ctx.drawImage(img, 0, 0, img.width, img.height);
 
     const pixelData = ctx.getImageData(x, y, 1, 1).data;
+    var audio = new Audio('../sounds/automatonSounds/bots_idle_'+(Math.floor(Math.random() * 30) + 1)+'.wav'); 
 
     if (pixelData[3] !== 0) { // Проверяем непрозрачность пикселя
         img.classList.add('automatonLight');
+        audio.play();
         setTimeout(function () {
             img.classList.remove('automatonLight');
-        }, 5 * 1000
-        );
+        }, 2 * 1000);
+    } else if(/Android|webOS|iPhone|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)){
+        window.location.href="main.html";
     }
 }
 
